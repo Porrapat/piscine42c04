@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi_base.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ecaceres <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ppetchda <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/08/05 19:16:17 by ecaceres          #+#    #+#             */
-/*   Updated: 2019/08/05 19:16:20 by ecaceres         ###   ########.fr       */
+/*   Created: 2021/10/26 23:52:59 by porrapat          #+#    #+#             */
+/*   Updated: 2021/10/26 23:53:55 by porrapat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ bool	is_base_valid(char *str)
 
 int	resolve_base(char *base, char match)
 {
-	int	index;
+	int		index;
 
 	index = 0;
 	while (base[index])
@@ -92,13 +92,11 @@ int	ft_atoi_base(char *str, char *base)
 			minus *= -1;
 		str++;
 	}
-	resolved = resolve_base(base, *str);
-	while (resolved != NO_MATCH)
+	while ((resolved = resolve_base(base, *str)) != NO_MATCH)
 	{
 		result *= radix;
 		result += resolved;
 		str++;
-		resolved = resolve_base(base, *str);
 	}
 	return (result * minus);
 }
