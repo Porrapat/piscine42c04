@@ -15,7 +15,7 @@
 
 #define NO_MATCH -1
 
-int		ft_strlen(char *str)
+int	ft_strlen(char *str)
 {
 	int	index;
 
@@ -58,9 +58,9 @@ bool	is_base_valid(char *str)
 	return (true);
 }
 
-int		resolve_base(char *base, char match)
+int	resolve_base(char *base, char match)
 {
-	int		index;
+	int	index;
 
 	index = 0;
 	while (base[index])
@@ -72,7 +72,7 @@ int		resolve_base(char *base, char match)
 	return (NO_MATCH);
 }
 
-int		ft_atoi_base(char *str, char *base)
+int	ft_atoi_base(char *str, char *base)
 {
 	int	radix;
 	int	result;
@@ -92,11 +92,13 @@ int		ft_atoi_base(char *str, char *base)
 			minus *= -1;
 		str++;
 	}
-	while ((resolved = resolve_base(base, *str)) != NO_MATCH)
+	resolved = resolve_base(base, *str);
+	while (resolved != NO_MATCH)
 	{
 		result *= radix;
 		result += resolved;
 		str++;
+		resolved = resolve_base(base, *str);
 	}
 	return (result * minus);
 }

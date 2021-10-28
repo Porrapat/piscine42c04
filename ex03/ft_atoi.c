@@ -38,7 +38,7 @@ bool	is_number(char c)
 	return (c >= '0' && c <= '9');
 }
 
-int		ft_atoi(char *str)
+int	ft_atoi(char *str)
 {
 	int	result;
 	int	minus;
