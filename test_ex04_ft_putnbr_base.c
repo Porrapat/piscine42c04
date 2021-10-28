@@ -11,16 +11,17 @@
 /* ************************************************************************** */
 #include <stdbool.h>
 #include <stdio.h>
+#include <limits.h>
 
-int		ft_str_is_lowercase(char *str);
+void	ft_putnbr_base(int nbr, char *base);
 
-int		main(void)
+int	main(void)
 {
-	char *str_valid;
-	char *str_invalid;
-
-	str_valid = "hello";
-	str_invalid = "hellO";
-	printf("should be 1: %d\n", ft_str_is_lowercase(str_valid));
-	printf("should be 0: %d\n", ft_str_is_lowercase(str_invalid));
+	ft_putnbr_base(-123456, "helo");
+	printf("\n");
+	fflush(stdout);
+	ft_putnbr_base(INT_MIN, "0123456789");
+	printf("\n");
+	fflush(stdout);
+	ft_putnbr_base(INT_MAX, "0123456789");
 }

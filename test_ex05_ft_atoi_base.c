@@ -12,15 +12,14 @@
 #include <stdbool.h>
 #include <stdio.h>
 
-int		ft_str_is_uppercase(char *str);
+int	ft_atoi_base(char *str, char *base);
 
-int		main(void)
+int	main(void)
 {
-	char *str_valid;
-	char *str_invalid;
-
-	str_valid = "HELLO";
-	str_invalid = "HELLo";
-	printf("should be 1: %d\n", ft_str_is_uppercase(str_valid));
-	printf("should be 0: %d\n", ft_str_is_uppercase(str_invalid));
+	printf("%d\n", ft_atoi_base("-123456", "0123456789"));
+	fflush(stdout);
+	printf("%d\n", ft_atoi_base("11110001001000000", "01"));
+	fflush(stdout);
+	printf("%d\n", ft_atoi_base("-1e240", "0123456789abcdef"));
+	fflush(stdout);
 }

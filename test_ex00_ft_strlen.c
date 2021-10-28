@@ -13,15 +13,13 @@
 #include <stdio.h>
 #include <string.h>
 
-int	ft_strcmp(char *s1, char *s2);
+int	ft_strlen(char *str);
 
 int	main(void)
 {
-	char *str1;
-	char *str2;
+	char *str;
 
-	str1 = "Hello";
-	str2 = "Helloo";
-	printf("c  : %d\n", strcmp(str1, str2));
-	printf("ft : %d\n", ft_strcmp(str1, str2));
+	str = "Hello ";
+	printf("c  : %lu\n", strlen(str));
+	printf("ft : %d\n", ft_strlen(str));
 }
