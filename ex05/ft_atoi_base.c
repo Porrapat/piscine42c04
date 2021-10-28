@@ -15,15 +15,7 @@
 
 #define NO_MATCH -1
 
-int	ft_strlen(char *str)
-{
-	int	index;
-
-	index = 0;
-	while (str[index])
-		index++;
-	return (index);
-}
+int	ft_strlen(char *str);
 
 bool	is_space(char c)
 {
@@ -72,6 +64,13 @@ int	resolve_base(char *base, char match)
 	return (NO_MATCH);
 }
 
+void	initial_value(int *radix, int *result, int *minus, char *base)
+{
+	*radix = ft_strlen(base);
+	*result = 0;
+	*minus = 1;
+}
+
 int	ft_atoi_base(char *str, char *base)
 {
 	int	radix;
@@ -81,9 +80,7 @@ int	ft_atoi_base(char *str, char *base)
 
 	if (!is_base_valid(base))
 		return (0);
-	radix = ft_strlen(base);
-	result = 0;
-	minus = 1;
+	initial_value(&radix, &result, &minus, base);
 	while (is_space(*str))
 		str++;
 	while (*str == '+' || *str == '-')
@@ -92,11 +89,13 @@ int	ft_atoi_base(char *str, char *base)
 			minus *= -1;
 		str++;
 	}
-	while ((resolved = resolve_base(base, *str)) != NO_MATCH)
+	resolved = resolve_base(base, *str);
+	while (resolved != NO_MATCH)
 	{
 		result *= radix;
 		result += resolved;
 		str++;
+		resolved = resolve_base(base, *str);
 	}
 	return (result * minus);
 }
