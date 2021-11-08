@@ -25,12 +25,6 @@ int	ft_strlen(char *str)
 	return (index);
 }
 
-bool	is_space(char c)
-{
-	return (c == '\t' || c == '\n' || c == '\v' || c == '\f'
-		|| c == '\r' || c == ' ');
-}
-
 bool	is_base_valid(char *str)
 {
 	char	*curr;
@@ -42,7 +36,8 @@ bool	is_base_valid(char *str)
 		return (false);
 	while (*curr)
 	{
-		if (is_space(*curr) || *curr == '+' || *curr == '-')
+		if (*curr == '\t' || *curr == '\n' || *curr == '\v' || *curr == '\f'
+			|| *curr == '\r' || *curr == ' ' || *curr == '+' || *curr == '-')
 			return (false);
 		curr++;
 	}
@@ -89,7 +84,7 @@ int	ft_atoi_base(char *str, char *base)
 	if (!is_base_valid(base))
 		return (0);
 	initial_value(&radix, &result, &minus, base);
-	while (is_space(*str))
+	while (*str == '\t' || *str == '\n' || *str == ' ')
 		str++;
 	while (*str == '+' || *str == '-')
 	{
